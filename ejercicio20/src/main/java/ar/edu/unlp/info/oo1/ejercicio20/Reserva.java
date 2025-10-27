@@ -45,5 +45,11 @@ public class Reserva {
 		this.periodo = periodo;
 	}
     
+	public double calcularReembolso(LocalDate fechaCancela) {
+		if(fechaCancela.isBefore(periodo.getTo())) {
+			return propiedad.getPolitica().calcularReembolso(this, fechaCancela);
+		}
+		return 0;
+	}
     
 }

@@ -8,7 +8,7 @@ public class Propiedad {
     private String direccion;
     private double precioPorNoche;
     private List<Reserva> reservas;
-
+    private PoliticaCancelacion politica;
     
     public Propiedad(String n, String dire, double precio) {
     	this.nombre = n;
@@ -16,7 +16,17 @@ public class Propiedad {
     	this.precioPorNoche = precio;
     }
     
-    public boolean estaDisponible(DateLapse periodo) {
+    
+    
+    public PoliticaCancelacion getPolitica() {
+		return politica;
+	}
+
+	public void setPolitica(PoliticaCancelacion politica) {
+		this.politica = politica;
+	}
+
+	public boolean estaDisponible(DateLapse periodo) {
         return reservas.stream().noneMatch(r -> r.getPeriodo().overlaps(periodo));
     }
 
